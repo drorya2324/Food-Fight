@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hit_Hurt.wav-74cf3e7f5810f362add8529427c5a49b.sample"
+
+[deps]
+
+source_file="res://‏‏תיקיה חדשה/Assets/SFX/Hit_Hurt.wav"
+dest_files=[ "res://.import/Hit_Hurt.wav-74cf3e7f5810f362add8529427c5a49b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
