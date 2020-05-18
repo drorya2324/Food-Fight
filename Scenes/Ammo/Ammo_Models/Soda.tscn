@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Ammo/models/Soda.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://Scenes/Ammo/Projectile.tscn" type="PackedScene" id=2]
+
+[node name="Soda" instance=ExtResource( 2 )]
+
+[node name="Soda" type="MeshInstance" parent="." index="3"]
+transform = Transform( 0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, -0.298, 0 )
+mesh = ExtResource( 1 )
+material/0 = null

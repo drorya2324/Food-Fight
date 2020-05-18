@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Ammo/models/doughnut.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://Scenes/Ammo/Projectile.tscn" type="PackedScene" id=2]
+
+[node name="doughnut" instance=ExtResource( 2 )]
+
+[node name="doughnut" type="MeshInstance" parent="." index="3"]
+mesh = ExtResource( 1 )
+material/0 = null
