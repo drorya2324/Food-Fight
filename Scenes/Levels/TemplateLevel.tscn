@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Models/Architecture/floorFull.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://Scenes/GUI/PauseMenue.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/characters/Players/PlayerM.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConcavePolygonShape" id=1]
@@ -39,12 +40,6 @@ data = {
 "type": "output"
 }, {
 "filter": [  ],
-"from": "Idle",
-"id": "IdleAnim",
-"position": Vector2( 198, 5 ),
-"type": "animation"
-}, {
-"filter": [  ],
 "from": "Run",
 "id": "RunAnim",
 "position": Vector2( 203, 121 ),
@@ -55,11 +50,21 @@ data = {
 "id": "Move",
 "position": Vector2( 415, 13 ),
 "type": "blend2"
+}, {
+"filter": [  ],
+"from": "Idle",
+"id": "IdleAnim",
+"position": Vector2( 198, 5 ),
+"type": "animation"
 } ]
 }
 
 [node name="Furniture" type="Node" parent="."]
 
 [node name="Walls" type="Node" parent="."]
+
+[node name="PauseMenu" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionWalls" type="Node" parent="."]
 
 [editable path="Player/Player"]

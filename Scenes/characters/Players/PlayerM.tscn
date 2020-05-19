@@ -7,6 +7,8 @@
 [ext_resource path="res://Scripts/Camera.gd" type="Script" id=5]
 
 [node name="Player" instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 17
 script = ExtResource( 4 )
 
 [node name="MeshInstance" parent="." index="0"]
@@ -31,15 +33,15 @@ data = {
 "type": "output"
 }, {
 "filter": [  ],
-"from": "Idle",
-"id": "IdleAnim",
-"position": Vector2( 198, 5 ),
-"type": "animation"
-}, {
-"filter": [  ],
 "from": "Run",
 "id": "RunAnim",
 "position": Vector2( 203, 121 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "Idle",
+"id": "IdleAnim",
+"position": Vector2( 198, 5 ),
 "type": "animation"
 }, {
 "blend": 0.0,
@@ -51,7 +53,12 @@ data = {
 }
 
 [node name="Camera" type="Camera" parent="." index="3"]
-transform = Transform( -0.999066, 0, 0.043201, 0, 1, 0, -0.043201, 0, -0.999066, 0, 1.57616, -2.78415 )
+transform = Transform( -0.999066, -0.0037652, 0.0430364, 0, 0.996195, 0.0871557, -0.0432008, 0.0870744, -0.995264, 0, 2.2, -2.784 )
+doppler_tracking = 2
+current = true
 script = ExtResource( 5 )
+
+[node name="CanFire" parent="." index="5"]
+wait_time = 0.5
 
 [editable path="Armature"]

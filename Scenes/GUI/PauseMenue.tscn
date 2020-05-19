@@ -1,0 +1,128 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Themes/DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scenes/GUI/GFX/blue_boxCheckmark.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/GUI/GFX/blue_button06.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/Kenney Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scripts/PauseManu.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 4 )
+
+[node name="PauseMenu" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 5 )
+
+[node name="Popup" type="Popup" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -220.0
+margin_top = -160.0
+margin_right = 220.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 440, 320 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Popup/CenterContainer"]
+margin_right = 440.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 440, 320 )
+color = Color( 0, 0, 0, 0.490196 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/CenterContainer"]
+margin_left = 12.0
+margin_top = 1.0
+margin_right = 428.0
+margin_bottom = 319.0
+
+[node name="Label" type="Label" parent="Popup/CenterContainer/VBoxContainer"]
+margin_right = 416.0
+margin_bottom = 123.0
+custom_fonts/font = SubResource( 1 )
+text = "pause Menu
+"
+align = 1
+valign = 1
+
+[node name="GridContainer" type="GridContainer" parent="Popup/CenterContainer/VBoxContainer"]
+margin_top = 127.0
+margin_right = 416.0
+margin_bottom = 318.0
+columns = 2
+
+[node name="Label" type="Label" parent="Popup/CenterContainer/VBoxContainer/GridContainer"]
+margin_right = 355.0
+margin_bottom = 63.0
+text = "Tuggle Full Sceen
+"
+align = 2
+valign = 2
+
+[node name="FullScreen" type="CheckBox" parent="Popup/CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 359.0
+margin_right = 416.0
+margin_bottom = 63.0
+custom_icons/checked = ExtResource( 2 )
+custom_icons/unchecked = ExtResource( 3 )
+
+[node name="Label2" type="Label" parent="Popup/CenterContainer/VBoxContainer/GridContainer"]
+margin_top = 67.0
+margin_right = 355.0
+margin_bottom = 130.0
+text = "Customise Character
+"
+align = 2
+valign = 2
+
+[node name="Customise" type="CheckBox" parent="Popup/CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 359.0
+margin_top = 67.0
+margin_right = 416.0
+margin_bottom = 130.0
+custom_icons/checked = ExtResource( 2 )
+custom_icons/unchecked = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Popup/CenterContainer/VBoxContainer/GridContainer"]
+margin_top = 147.0
+margin_right = 355.0
+margin_bottom = 177.0
+text = "Quit Game"
+align = 2
+valign = 2
+
+[node name="Quit" type="CheckBox" parent="Popup/CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 359.0
+margin_top = 134.0
+margin_right = 416.0
+margin_bottom = 191.0
+custom_icons/checked = ExtResource( 2 )
+custom_icons/unchecked = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Popup/CenterContainer/VBoxContainer/GridContainer/FullScreen" to="." method="_on_FullScreen_pressed"]
+[connection signal="pressed" from="Popup/CenterContainer/VBoxContainer/GridContainer/Customise" to="." method="_on_Customise_pressed"]
+[connection signal="pressed" from="Popup/CenterContainer/VBoxContainer/GridContainer/Quit" to="." method="_on_Quit_pressed"]

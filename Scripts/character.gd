@@ -3,6 +3,8 @@ extends KinematicBody
 const PROJECTILE_SPEED = 50
 
 var ammo_types = {}
+var can_fire = true
+
 
 func _enter_tree():
 	ammo_types = FileGrabber.get_files("res://Scenes/Ammo/Ammo_Models/")
@@ -19,3 +21,7 @@ func fire():
 	bullet.set_linear_velocity(character_forward * PROJECTILE_SPEED)
 	bullet.add_collision_exception_with(self)
 
+
+
+func _on_CanFire_timeout():
+	can_fire = true
