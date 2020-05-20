@@ -14,13 +14,26 @@ const DECCEL = 15
 const JUMP_SPEED = 15
 const  GRAVITY = -45
 
+
+
+# Ammo variables
+export var max_ammo = 5
+var ammo = 0
+var can_refill = false
+
+
+
 # animation constans
-const BLEND_MINIMUM = 0.125
-const RUN_BLEND_AMOUNT = 0.075
+const BLEND_MINIMUM = 0.1
+const RUN_BLEND_AMOUNT = 0.1
 const IDLE_BLEND_AMOUNT = 0.25
+const RELOAD_BLEND_AMOUNT = 0.1
+const ACTION_RESET_RATE = 0.25
+
 
 # animation variables
 var move_state = 0 # 0 is idle, 1 is run
+var action_state = 0 # -1 is throw, 0 is idle, +1 is reload
 
 
 
@@ -98,22 +111,63 @@ func animate():
 		move_state += RUN_BLEND_AMOUNT
 	else:
 		move_state -= IDLE_BLEND_AMOUNT
-	move_state = clamp(move_state,0,1)	
+	move_state = clamp(move_state,0,1)
+	
+	if can_refill:
+		action_state += RELOAD_BLEND_AMOUNT
+	action_state = clamp(action_state, -1, 1)
+	action_state = lerp(action_state, 0, ACTION_RESET_RATE)
+	
 	animate.blend2_node_set_amount("Move", move_state )
+	animate.blend3_node_set_amount("Action", action_state)
+
+
 
 func _input(event):
 	if Input.is_action_just_pressed("fire"):
 		try_to_fire()
 
 
+
 func try_to_fire():
-	if can_fire:
+	if can_fire and ammo>0:
 		can_fire = false
+		ammo -= 1
 		$CanFire.start()
 		fire()
+		update_GUI()
+		action_state = -1
 
 
 
 func hurt():
 	pass
+
+
+func check_ammo_amount():
+	if ammo < max_ammo:
+		return true
+
+
+func _on_CanRefill_timeout():
+	if check_ammo_amount():
+		ammo += 1
+		update_GUI()
+
+
+func RefillArea_enterd():
+	if check_ammo_amount():
+		$RefillTimer.start()
+		can_refill = true
+		$Harp.play()
+
+func RefillArea_exited():
+	$RefillTimer.stop()
+	can_refill = false
+	$Harp.stop()
+	
+
+func update_GUI(): 
+	get_node("../../GUI/Label").text = str(ammo)
+
 

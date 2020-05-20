@@ -22,6 +22,5 @@ func fire():
 	bullet.add_collision_exception_with(self)
 
 
-
 func _on_CanFire_timeout():
 	can_fire = true

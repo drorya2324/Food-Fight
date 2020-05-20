@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/characters/Animations-Male/death.anim" type="Animation" id=2]
 [ext_resource path="res://Scenes/characters/Players/Armatures/Armature-M.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Camera.gd" type="Script" id=5]
+[ext_resource path="res://SFX/harp-glissando-up.wav" type="AudioStream" id=6]
 
 [node name="Player" instance=ExtResource( 1 )]
 collision_layer = 2
@@ -25,30 +26,47 @@ master_player = NodePath("../AnimationPlayer")
 active = true
 data = {
 "active": true,
-"connections": [ "Move", "out", 0, "IdleAnim", "Move", 0, "RunAnim", "Move", 1 ],
+"connections": [ "Action", "out", 0, "ThrowAnim", "Action", 0, "Move", "Action", 1, "ReloadAnim", "Action", 2, "IdleAnim", "Move", 0, "RunAnim", "Move", 1 ],
 "master": NodePath("../AnimationPlayer"),
 "nodes": [ {
 "id": "out",
-"position": Vector2( 607, 44 ),
+"position": Vector2( 699, 126 ),
 "type": "output"
+}, {
+"filter": [  ],
+"from": "Working",
+"id": "ReloadAnim",
+"position": Vector2( 372, 271 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "Punch",
+"id": "ThrowAnim",
+"position": Vector2( 384, 34 ),
+"type": "animation"
+}, {
+"blend": 1.0,
+"id": "Action",
+"position": Vector2( 552, 107 ),
+"type": "blend3"
+}, {
+"blend": 0.0,
+"filter": [  ],
+"id": "Move",
+"position": Vector2( 221, 126 ),
+"type": "blend2"
 }, {
 "filter": [  ],
 "from": "Run",
 "id": "RunAnim",
-"position": Vector2( 203, 121 ),
+"position": Vector2( 39, 235 ),
 "type": "animation"
 }, {
 "filter": [  ],
 "from": "Idle",
 "id": "IdleAnim",
-"position": Vector2( 198, 5 ),
+"position": Vector2( 50, 87 ),
 "type": "animation"
-}, {
-"blend": 0.0,
-"filter": [  ],
-"id": "Move",
-"position": Vector2( 415, 13 ),
-"type": "blend2"
 } ]
 }
 
@@ -60,5 +78,12 @@ script = ExtResource( 5 )
 
 [node name="CanFire" parent="." index="5"]
 wait_time = 0.5
+
+[node name="RefillTimer" type="Timer" parent="." index="6"]
+
+[node name="Harp" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource( 6 )
+volume_db = -15.0
+[connection signal="timeout" from="RefillTimer" to="." method="_on_CanRefill_timeout"]
 
 [editable path="Armature"]

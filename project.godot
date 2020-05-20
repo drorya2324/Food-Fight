@@ -23,6 +23,11 @@ config/icon="res://icon.png"
 
 FileGrabber="*res://Scripts/file_grabber.gd"
 
+[display]
+
+window/size/width=512
+window/size/height=300
+
 [input]
 
 forward={
