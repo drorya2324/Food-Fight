@@ -24,23 +24,26 @@ var can_refill = false
 
 
 # animation constans
-const BLEND_MINIMUM = 0.1
+const BLEND_MINIMUM = 0.8
 const RUN_BLEND_AMOUNT = 0.1
 const IDLE_BLEND_AMOUNT = 0.25
 const RELOAD_BLEND_AMOUNT = 0.1
-const ACTION_RESET_RATE = 0.25
+const ACTION_RESET_RATE = 0.05
 
 
 # animation variables
 var move_state = 0 # 0 is idle, 1 is run
 var action_state = 0 # -1 is throw, 0 is idle, +1 is reload
 
-
+func _ready():
+	character_type = CHARACTER_TYPES.player
+	update_lives()
 
 func _physics_process(delta):
 	move(delta)
 	face_forward()
 	animate()
+	refresh_refill_counter()
 
 func move(delta):
 	var movement_dir = get_2d_movement()
@@ -106,7 +109,7 @@ func h_accel(dir, delta):
 	return vel
 
 func animate():
-	var animate = $Armature/AnimationTreePlayer
+	var animate = $Armature/AnimationTreePlayer2
 	if vel.length() > BLEND_MINIMUM:
 		move_state += RUN_BLEND_AMOUNT
 	else:
@@ -140,9 +143,6 @@ func try_to_fire():
 
 
 
-func hurt():
-	pass
-
 
 func check_ammo_amount():
 	if ammo < max_ammo:
@@ -168,6 +168,20 @@ func RefillArea_exited():
 	
 
 func update_GUI(): 
-	get_node("../../GUI/Label").text = str(ammo)
+	get_tree().call_group("GUI","refresh_AmmoCount" ,ammo)
+
+func refresh_refill_counter():
+	if can_refill:
+		var refill_time_left = $RefillTimer.wait_time - $RefillTimer.time_left
+		get_tree().call_group("GUI","Refill",refill_time_left )
+	else:
+		get_tree().call_group("GUI","Refill",0 )
+
+#func update_lives():
+#	if character_type == CHARACTER_TYPES.player:
+#		get_tree().call_group("GUI","update_lives", lives)
+
+func die():
+	get_tree().change_scene("res://Scenes/GUI/GameOver/GameOver.tscn")
 
 
