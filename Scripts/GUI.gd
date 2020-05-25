@@ -4,6 +4,7 @@ extends CanvasLayer
 func refresh_AmmoCount(ammo):
 	$Refill/CenterContainer/AmmoCount.text = str(ammo)
 
+# Being called by
 func Refill(amount):
 	$Refill.value = amount * 100
 

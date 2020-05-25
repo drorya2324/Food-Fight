@@ -1,0 +1,50 @@
+[gd_scene format=2]
+
+[node name="AnimationTreePlayer2" type="AnimationTreePlayer"]
+master_player = NodePath("../AnimationPlayer")
+active = true
+data = {
+"active": true,
+"connections": [ "Action", "out", 0, "ThrowAnim", "Action", 0, "Move", "Action", 1, "RefillAnim", "Action", 2, "anim", "Move", 0, "anim 2", "Move", 1 ],
+"master": NodePath("../AnimationPlayer"),
+"nodes": [ {
+"filter": [  ],
+"from": "Idle",
+"id": "anim",
+"position": Vector2( 104, 13 ),
+"type": "animation"
+}, {
+"id": "out",
+"position": Vector2( 784, 87 ),
+"type": "output"
+}, {
+"blend": -0.02,
+"id": "Action",
+"position": Vector2( 630, 41 ),
+"type": "blend3"
+}, {
+"filter": [  ],
+"from": "Working",
+"id": "RefillAnim",
+"position": Vector2( 447, 167 ),
+"type": "animation"
+}, {
+"blend": 0.0,
+"filter": [  ],
+"id": "Move",
+"position": Vector2( 268, 63 ),
+"type": "blend2"
+}, {
+"filter": [  ],
+"from": "Run",
+"id": "anim 2",
+"position": Vector2( 124, 137 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "Punch",
+"id": "ThrowAnim",
+"position": Vector2( 439, 14 ),
+"type": "animation"
+} ]
+}

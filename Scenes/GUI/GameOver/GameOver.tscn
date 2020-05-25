@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Models/Robot/Robot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Themes/DefaultTheme.tres" type="Theme" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Models/Robot/Grey.material" type="Material" id=4]
 [ext_resource path="res://Models/Robot/Main.material" type="Material" id=5]
 [ext_resource path="res://Scripts/GameOver.gd" type="Script" id=6]
+[ext_resource path="res://SFX/GameOver.ogg" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Robot_Dance"
@@ -3070,9 +3071,9 @@ transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Robot" type="KinematicBody" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport" instance=ExtResource( 1 )]
+[node name="Robot" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport" instance=ExtResource( 1 )]
 
-[node name="RobotArmature" type="Skeleton" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot" index="0"]
+[node name="RobotArmature" type="Skeleton" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot"]
 bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform( 1, 4.76837e-07, 0, 0, 0, -1, -4.76837e-07, 1, 0, -0.00319546, -0.00588517, -0.195048 )
@@ -3082,12 +3083,12 @@ bones/1/name = "Foot.L"
 bones/1/parent = 0
 bones/1/rest = Transform( -1, 2.00289e-07, 1.8309e-07, -1.765e-07, 0.0324217, -0.999474, -2.0612e-07, -0.999474, -0.0324216, 0.636722, 0.0570147, -0.0305792 )
 bones/1/enabled = true
-bones/1/bound_children = [ NodePath("BoneAttachment002") ]
+bones/1/bound_children = [  ]
 bones/2/name = "Body"
 bones/2/parent = 0
 bones/2/rest = Transform( 1, 2.38419e-07, 0, -2.38419e-07, 1, 0, 0, 0, 1, 0.0052459, 0.30772, -1.44646 )
 bones/2/enabled = true
-bones/2/bound_children = [ NodePath("BoneAttachment011") ]
+bones/2/bound_children = [  ]
 bones/3/name = "Hips"
 bones/3/parent = 2
 bones/3/rest = Transform( 1, -5.15106e-07, -1.69245e-07, 5.40507e-07, 0.971699, 0.236221, 4.2777e-08, -0.236221, 0.971699, -0.0020505, -0.112672, 0.0965745 )
@@ -3112,17 +3113,17 @@ bones/7/name = "Head"
 bones/7/parent = 6
 bones/7/rest = Transform( 0.999996, -5.71435e-05, 0.00280693, 4.5182e-05, 0.999991, 0.00426129, -0.00280715, -0.00426114, 0.999987, 8.43769e-15, 0, -0.309866 )
 bones/7/enabled = true
-bones/7/bound_children = [ NodePath("BoneAttachment004") ]
+bones/7/bound_children = [  ]
 bones/8/name = "Shoulder.L"
 bones/8/parent = 5
 bones/8/rest = Transform( -0.0262236, 8.44942e-07, -0.999656, 0.108728, 0.994067, -0.00285137, 0.993726, -0.108766, -0.026068, 0.582738, 0.0324413, -0.29672 )
 bones/8/enabled = true
-bones/8/bound_children = [ NodePath("BoneAttachment009") ]
+bones/8/bound_children = [  ]
 bones/9/name = "UpperArm.L"
 bones/9/parent = 8
 bones/9/rest = Transform( -0.0665225, -0.997623, 0.0179503, 0.996087, -0.0674477, -0.0571159, 0.0581909, 0.0140805, 0.998206, 7.58915e-08, 4.21522e-10, -0.0840361 )
 bones/9/enabled = true
-bones/9/bound_children = [ NodePath("BoneAttachment") ]
+bones/9/bound_children = [  ]
 bones/10/name = "LowerArm.L"
 bones/10/parent = 9
 bones/10/rest = Transform( 0.9932, 0.0683402, 0.0942458, -0.0660798, 0.997452, -0.0269033, -0.0958442, 0.0204927, 0.995185, 2.6077e-08, -2.95928e-07, -0.657292 )
@@ -3187,12 +3188,12 @@ bones/22/name = "Shoulder.R"
 bones/22/parent = 5
 bones/22/rest = Transform( -0.00985833, 3.3516e-07, 0.999951, -0.108764, 0.994067, -0.00107262, -0.994019, -0.108769, -0.00979985, -0.636816, 0.0324391, -0.296747 )
 bones/22/enabled = true
-bones/22/bound_children = [ NodePath("BoneAttachment010") ]
+bones/22/bound_children = [  ]
 bones/23/name = "UpperArm.R"
 bones/23/parent = 22
 bones/23/rest = Transform( -0.264377, 0.964418, 0.00169633, -0.962392, -0.263707, -0.0652631, -0.0624936, -0.0188866, 0.997867, -1.54751e-07, 4.48381e-10, -0.102178 )
 bones/23/enabled = true
-bones/23/bound_children = [ NodePath("BoneAttachment001") ]
+bones/23/bound_children = [  ]
 bones/24/name = "LowerArm.R"
 bones/24/parent = 23
 bones/24/rest = Transform( 0.99135, -0.091898, -0.0936974, 0.0874795, 0.994899, -0.0502294, 0.0978354, 0.0415983, 0.994333, -1.11759e-08, 2.5332e-07, -0.575238 )
@@ -3262,17 +3263,17 @@ bones/37/name = "UpperLeg.L"
 bones/37/parent = 2
 bones/37/rest = Transform( 1, 1.82483e-07, 9.75515e-08, 1.96853e-07, -0.984274, -0.176683, 6.37748e-08, 0.176683, -0.984268, 0.628246, -0.182561, -0.0962255 )
 bones/37/enabled = true
-bones/37/bound_children = [ NodePath("BoneAttachment005") ]
+bones/37/bound_children = [  ]
 bones/38/name = "LowerLeg.L"
 bones/38/parent = 37
 bones/38/rest = Transform( 1, 2.4274e-07, -1.57482e-07, -2.83173e-07, 0.932863, -0.360232, 5.94661e-08, 0.360232, 0.932863, -7.93887e-08, -8.81869e-10, -0.611007 )
 bones/38/enabled = true
-bones/38/bound_children = [ NodePath("BoneAttachment007") ]
+bones/38/bound_children = [  ]
 bones/39/name = "Foot.R"
 bones/39/parent = 0
 bones/39/rest = Transform( -1, 1.6308e-06, 1.8309e-07, -1.3012e-07, 0.0324215, -0.999475, -1.63588e-06, -0.999474, -0.0324217, -0.636881, 0.057014, -0.0305792 )
 bones/39/enabled = true
-bones/39/bound_children = [ NodePath("BoneAttachment003") ]
+bones/39/bound_children = [  ]
 bones/40/name = "PoleTarget.R"
 bones/40/parent = 0
 bones/40/rest = Transform( 1, 2.38419e-07, 0, -2.38419e-07, 1, 0, 0, 0, 1, -0.645239, 1.70949, -1.05808 )
@@ -3282,14 +3283,14 @@ bones/41/name = "UpperLeg.R"
 bones/41/parent = 2
 bones/41/rest = Transform( 1, 1.1513e-06, 9.75515e-08, 1.15042e-06, -0.984274, -0.176683, -1.07397e-07, 0.176683, -0.984268, -0.645357, -0.182562, -0.0962255 )
 bones/41/enabled = true
-bones/41/bound_children = [ NodePath("BoneAttachment006") ]
+bones/41/bound_children = [  ]
 bones/42/name = "LowerLeg.R"
 bones/42/parent = 41
 bones/42/rest = Transform( 1, -6.08012e-07, 1.348e-07, 6.15751e-07, 0.932863, -0.360232, 9.3275e-08, 0.360232, 0.932863, -2.18609e-09, -4.62268e-09, -0.611007 )
 bones/42/enabled = true
-bones/42/bound_children = [ NodePath("BoneAttachment008") ]
+bones/42/bound_children = [  ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
 autoplay = "Robot_ThumbsUp"
 anims/Robot_Dance = SubResource( 1 )
 anims/Robot_Idle = SubResource( 2 )
@@ -3301,128 +3302,178 @@ anims/Robot_Sitting = SubResource( 7 )
 anims/Robot_ThumbsUp = SubResource( 8 )
 anims/Robot_WalkJump = SubResource( 9 )
 
-[node name="BoneAttachment" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="1"]
-transform = Transform( 0.0336137, 0.971919, -0.232902, -0.957012, 0.0984743, 0.27282, 0.288093, 0.21372, 0.933448, 0.677955, 2.8132, -0.134088 )
+[node name="BoneAttachment" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( -0.0564262, 0.0120857, -0.998333, 0.0680234, 0.99765, 0.00823249, 0.996087, -0.0674447, -0.0571156, 0.666745, 2.43728, -0.0168432 )
 bone_name = "UpperArm.L"
 
-[node name="ArmL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment" index="0"]
+[node name="ArmL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment"]
 transform = Transform( -0.0656895, 0.0525771, 0.996453, 0.10077, 0.993855, -0.0457968, -0.992739, 0.0974038, -0.0705838, 0.0400112, -0.163376, 0.617577 )
 mesh = SubResource( 10 )
 material/0 = null
 
-[node name="BoneAttachment001" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="2"]
-transform = Transform( 0.03312, -0.93539, 0.352062, -0.736404, 0.215321, 0.641363, -0.67573, -0.280501, -0.681694, -0.594602, 2.87936, 0.118694 )
+[node name="BoneAttachment001" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( -0.059884, -0.0283931, 0.997801, -0.264981, 0.964185, 0.0115335, -0.962391, -0.263708, -0.0652628, -0.738989, 2.43851, -0.0168432 )
 bone_name = "UpperArm.R"
 
-[node name="ArmR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment001" index="0"]
+[node name="ArmR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment001"]
 transform = Transform( -0.00118008, -0.0644651, -0.217693, -0.0438732, 0.213657, -0.0630322, 0.222757, 0.0417393, -0.0135677, -0.0229083, 0.00509381, -0.409791 )
 mesh = SubResource( 11 )
 material/0 = null
 
-[node name="BoneAttachment002" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="3"]
-transform = Transform( -1, 2.15749e-07, -2.93496e-07, 3.46028e-07, 0.814378, -0.580334, 1.1381e-07, -0.580334, -0.814378, 0.633527, 0.911695, 0.770525 )
+[node name="BoneAttachment002" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( -1, 2.15749e-07, -2.93496e-07, 2.0612e-07, 0.999474, 0.0324216, 3.00337e-07, 0.0324217, -0.999474, 0.633527, 0.024694, -0.138034 )
 bone_name = "Foot.L"
 
-[node name="FootL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment002" index="0"]
+[node name="FootL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment002"]
 transform = Transform( -1, 2.0612e-07, 3.00337e-07, 2.15749e-07, 0.999474, 0.0324217, -2.93497e-07, 0.0324217, -0.999474, 0.00946879, 0.383445, 0.00866596 )
 mesh = SubResource( 12 )
 material/0 = null
 
-[node name="BoneAttachment003" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="4"]
-transform = Transform( -1, 1.64626e-06, -2.93496e-07, -1.62452e-06, -0.914774, 0.403965, 3.96548e-07, 0.403965, 0.914775, -0.640077, 1.71671, -1.38683 )
+[node name="BoneAttachment003" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( -1, 1.64626e-06, -2.93497e-07, 1.63588e-06, 0.999474, 0.0324217, 3.46717e-07, 0.0324215, -0.999475, -0.640076, 0.024694, -0.138034 )
 bone_name = "Foot.R"
 
-[node name="FootR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment003" index="0"]
+[node name="FootR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment003"]
 transform = Transform( -1, 1.63588e-06, 3.46717e-07, 1.64626e-06, 0.999474, 0.0324216, -2.93497e-07, 0.0324215, -0.999474, -0.00207841, 0.383445, 0.00866601 )
 mesh = SubResource( 13 )
 material/0 = null
 
-[node name="HandL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="5"]
+[node name="HandL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271564, 2.3703, -0.0209941 )
 mesh = SubResource( 14 )
 material/0 = null
 material/1 = null
 
-[node name="HandR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="6"]
+[node name="HandR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00271564, 2.3703, -0.0209941 )
 mesh = SubResource( 15 )
 material/0 = null
 material/1 = null
 
-[node name="BoneAttachment004" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="7"]
-transform = Transform( 0.994921, 0.0786061, -0.0628788, -0.0651519, 0.0266935, -0.997518, -0.0767326, 0.996548, 0.0316793, 0.117991, 3.52595, -0.00794379 )
+[node name="BoneAttachment004" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( 0.999996, -5.63962e-05, 0.00280693, 0.00280538, -0.0187642, -0.99982, 0.000109056, 0.999824, -0.018764, 6.14762e-09, 3.03846, -0.0107013 )
 bone_name = "Head"
 
-[node name="Head" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment004" index="0"]
+[node name="Head" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment004"]
 transform = Transform( 0.999996, 0.00280534, 0.000109062, -5.63674e-05, -0.0187638, 0.999824, 0.00280694, -0.99982, -0.0187636, 0.0406179, 0.0670674, -0.335165 )
 mesh = SubResource( 16 )
 material/0 = null
 material/1 = null
 material/2 = null
 
-[node name="BoneAttachment005" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="8"]
-transform = Transform( 0.919356, -0.353713, -0.172272, -0.258883, -0.873613, 0.412081, -0.296252, -0.334261, -0.894718, 0.6277, 1.98864, -0.188653 )
+[node name="BoneAttachment005" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( 1, -5.21525e-07, -2.88221e-08, -6.37748e-08, -0.176683, 0.984268, -5.18403e-07, -0.984274, -0.176683, 0.630296, 1.5368, -0.0698894 )
 bone_name = "UpperLeg.L"
 
-[node name="LegL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment005" index="0"]
+[node name="LegL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment005"]
 transform = Transform( 0.999981, 0.00199891, 0.00578755, 0.0060775, -0.209273, -0.977831, -0.000743445, 0.977856, -0.209281, -0.00647306, 0.187741, -0.616836 )
 mesh = SubResource( 17 )
 material/0 = null
 
-[node name="BoneAttachment006" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="9"]
-transform = Transform( 0.936026, 0.329576, 0.123451, -0.344852, 0.788961, 0.50858, 0.0702176, -0.518636, 0.852121, -0.619012, 2.06833, 0.0591836 )
+[node name="BoneAttachment006" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( 1, 4.47292e-07, -2.88221e-08, 1.07397e-07, -0.176683, 0.984268, 4.35164e-07, -0.984274, -0.176683, -0.643307, 1.5368, -0.0698895 )
 bone_name = "UpperLeg.R"
 
-[node name="LegR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment006" index="0"]
+[node name="LegR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment006"]
 transform = Transform( 0.999981, 0.001871, 0.00586677, 0.00610587, -0.177769, -0.984027, -0.000798233, 0.984071, -0.177774, 0.00647932, 0.177481, -0.582784 )
 mesh = SubResource( 18 )
 material/0 = null
 
-[node name="BoneAttachment007" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="10"]
-transform = Transform( 0.919356, -0.378557, 0.107169, -0.258883, -0.376986, 0.889321, -0.296252, -0.845346, -0.44457, 0.73296, 1.73686, 0.358026 )
+[node name="BoneAttachment007" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( 1, -2.54154e-07, 3.50088e-09, 4.47876e-08, 0.189744, 0.981834, -2.5019e-07, -0.98184, 0.189746, 0.630296, 0.935406, 0.0380651 )
 bone_name = "LowerLeg.L"
 
-[node name="LowerLegL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment007" index="0"]
+[node name="LowerLegL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment007"]
 transform = Transform( 0.999981, 0.00199893, 0.00578763, 0.00530049, 0.190558, -0.981655, -0.00306512, 0.981674, 0.19054, -0.00611609, -0.160538, -0.587648 )
 mesh = SubResource( 19 )
 material/0 = null
 
-[node name="BoneAttachment008" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="11"]
-transform = Transform( 0.936026, 0.347025, -0.0585942, -0.344852, 0.937643, 0.0440217, 0.0702174, -0.0210266, 0.997322, -0.694442, 1.75758, -0.461468 )
+[node name="BoneAttachment008" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( 1, -2.01132e-07, -5.3216e-08, 9.04119e-08, 0.189744, 0.981834, -1.87384e-07, -0.98184, 0.189746, -0.643307, 0.935406, 0.038065 )
 bone_name = "LowerLeg.R"
 
-[node name="LowerLegR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment008" index="0"]
+[node name="LowerLegR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment008"]
 transform = Transform( 0.999981, 0.0018711, 0.00586647, 0.00540191, 0.190626, -0.981623, -0.002955, 0.981662, 0.1906, 0.00647932, -0.160471, -0.587657 )
 mesh = SubResource( 20 )
 material/0 = null
 
-[node name="BoneAttachment009" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="12"]
-transform = Transform( -0.918576, 0.194197, -0.344245, -0.3532, -0.0124136, 0.935466, 0.177391, 0.980883, 0.0799937, 0.649026, 2.89181, -0.127366 )
+[node name="BoneAttachment009" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( -0.0262237, 2.39866e-07, -0.999656, -0.999656, -2.22027e-06, 0.0262235, -2.91318e-06, 0.999999, 3.12459e-07, 0.582738, 2.43949, -0.0168432 )
 bone_name = "Shoulder.L"
 
-[node name="ShoulderL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment009" index="0"]
+[node name="ShoulderL" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment009"]
 transform = Transform( -0.0259367, 0.999664, 4.36962e-08, -5.68434e-13, -4.37119e-08, 1, 0.999664, 0.0259367, 1.13371e-09, 0.0627744, -0.0193458, -0.139209 )
 mesh = SubResource( 21 )
 material/0 = null
 
-[node name="BoneAttachment010" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="13"]
-transform = Transform( -0.85118, 0.194197, 0.487626, 0.494917, -0.0124125, 0.868851, 0.174781, 0.980884, -0.0855466, -0.544777, 2.96814, 0.109953 )
+[node name="BoneAttachment010" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( -0.00985826, -2.69916e-07, 0.999951, 0.999951, 7.59959e-07, 0.00985831, -1.02818e-06, 1, 2.61236e-07, -0.636816, 2.43952, -0.0168431 )
 bone_name = "Shoulder.R"
 
-[node name="ShoulderR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment010" index="0"]
+[node name="ShoulderR" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment010"]
 transform = Transform( -0.00985801, 0.999951, -1.1798e-06, -2.69271e-07, 1.21966e-06, 1, 0.999952, 0.0098581, 2.583e-07, -0.118316, -0.00415106, -0.0949789 )
 mesh = SubResource( 22 )
 material/0 = null
 
-[node name="BoneAttachment011" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="14"]
-transform = Transform( 0.978886, 0.194199, -0.0637856, -0.0625663, -0.0124124, -0.997964, -0.194596, 0.980883, -2.05009e-08, 0.0420345, 1.92965, 0.112672 )
+[node name="BoneAttachment011" type="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature"]
+transform = Transform( 1, 7.15256e-07, 0, 0, 0, -1, -7.15256e-07, 1, 0, 0.00205059, 1.44057, 0.112672 )
 bone_name = "Body"
 
-[node name="Torso" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment011" index="0"]
+[node name="Torso" type="MeshInstance" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature/BoneAttachment011"]
 transform = Transform( 1, 0, -7.15256e-07, 7.15256e-07, 0, 1, 0, -1, 0, -0.00476612, -0.132253, -0.490335 )
 mesh = SubResource( 23 )
 material/0 = null
 material/1 = null
+
+[node name="RobotArmature" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot" index="1"]
+bones/1/bound_children = [  ]
+bones/2/bound_children = [  ]
+bones/7/bound_children = [  ]
+bones/8/bound_children = [  ]
+bones/9/bound_children = [  ]
+bones/22/bound_children = [  ]
+bones/23/bound_children = [  ]
+bones/37/bound_children = [  ]
+bones/38/bound_children = [  ]
+bones/39/bound_children = [  ]
+bones/41/bound_children = [  ]
+bones/42/bound_children = [  ]
+
+[node name="BoneAttachment" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="1"]
+transform = Transform( -0.0564262, 0.0120857, -0.998333, 0.0680234, 0.99765, 0.00823249, 0.996087, -0.0674447, -0.0571156, 0.666745, 2.43728, -0.0168432 )
+
+[node name="BoneAttachment001" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="2"]
+transform = Transform( -0.059884, -0.0283931, 0.997801, -0.264981, 0.964185, 0.0115335, -0.962391, -0.263708, -0.0652628, -0.738989, 2.43851, -0.0168432 )
+
+[node name="BoneAttachment002" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="3"]
+transform = Transform( -1, 2.15749e-07, -2.93496e-07, 2.0612e-07, 0.999474, 0.0324216, 3.00337e-07, 0.0324217, -0.999474, 0.633527, 0.024694, -0.138034 )
+
+[node name="BoneAttachment003" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="4"]
+transform = Transform( -1, 1.64626e-06, -2.93497e-07, 1.63588e-06, 0.999474, 0.0324217, 3.46717e-07, 0.0324215, -0.999475, -0.640076, 0.024694, -0.138034 )
+
+[node name="BoneAttachment004" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="7"]
+transform = Transform( 0.999996, -5.63962e-05, 0.00280693, 0.00280538, -0.0187642, -0.99982, 0.000109056, 0.999824, -0.018764, 6.14762e-09, 3.03846, -0.0107013 )
+
+[node name="BoneAttachment005" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="8"]
+transform = Transform( 1, -5.21525e-07, -2.88221e-08, -6.37748e-08, -0.176683, 0.984268, -5.18403e-07, -0.984274, -0.176683, 0.630296, 1.5368, -0.0698894 )
+
+[node name="BoneAttachment006" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="9"]
+transform = Transform( 1, 4.47292e-07, -2.88221e-08, 1.07397e-07, -0.176683, 0.984268, 4.35164e-07, -0.984274, -0.176683, -0.643307, 1.5368, -0.0698895 )
+
+[node name="BoneAttachment007" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="10"]
+transform = Transform( 1, -2.54154e-07, 3.50088e-09, 4.47876e-08, 0.189744, 0.981834, -2.5019e-07, -0.98184, 0.189746, 0.630296, 0.935406, 0.0380651 )
+
+[node name="BoneAttachment008" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="11"]
+transform = Transform( 1, -2.01132e-07, -5.3216e-08, 9.04119e-08, 0.189744, 0.981834, -1.87384e-07, -0.98184, 0.189746, -0.643307, 0.935406, 0.038065 )
+
+[node name="BoneAttachment009" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="12"]
+transform = Transform( -0.0262237, 2.39866e-07, -0.999656, -0.999656, -2.22027e-06, 0.0262235, -2.91318e-06, 0.999999, 3.12459e-07, 0.582738, 2.43949, -0.0168432 )
+
+[node name="BoneAttachment010" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="13"]
+transform = Transform( -0.00985826, -2.69916e-07, 0.999951, 0.999951, 7.59959e-07, 0.00985831, -1.02818e-06, 1, 2.61236e-07, -0.636816, 2.43952, -0.0168431 )
+
+[node name="BoneAttachment011" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport/Robot/RobotArmature" index="14"]
+transform = Transform( 1, 7.15256e-07, 0, 0, 0, -1, -7.15256e-07, 1, 0, 0.00205059, 1.44057, 0.112672 )
 
 [node name="Camera" type="Camera" parent="CenterContainer/VBoxContainer/CenterContainer/ViewportContainer/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18, 3.023, 5.5 )
@@ -3473,6 +3524,11 @@ margin_top = 34.0
 margin_right = 189.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 30, 30 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+autoplay = true
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/GridContainer/TryAgainButton" to="." method="_on_TryAgainButton_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/GridContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 

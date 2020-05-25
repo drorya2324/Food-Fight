@@ -52,18 +52,4 @@ func update_lives():
 
 func die():
 	queue_free()
-	#var robot = CHARACTER_TYPES.npc
-	#var player =  CHARACTER_TYPES.player
-	#while get_tree().get_root().get_child_count() > 1:
-	#	var robots_count = get_tree().get_root().get_child_count()
-	#	if character_type == robot:
-	#		queue_free()
-	#if character_type == player:
-	#	ending = 0
-	#	get_tree().call_group("GUI","game_over", ending)
-	#else:
-	#	ending = 1
-	#	get_tree().call_group("GUI","game_over", ending)
 
-
-	

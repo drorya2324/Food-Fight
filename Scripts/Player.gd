@@ -37,6 +37,8 @@ var action_state = 0 # -1 is throw, 0 is idle, +1 is reload
 
 func _ready():
 	character_type = CHARACTER_TYPES.player
+	if Costumisation.Player_materials != null:
+		$Armature/Mesh.set_surface_material(0 , Costumisation.Player_materials)
 	update_lives()
 
 func _physics_process(delta):
@@ -176,10 +178,6 @@ func refresh_refill_counter():
 		get_tree().call_group("GUI","Refill",refill_time_left )
 	else:
 		get_tree().call_group("GUI","Refill",0 )
-
-#func update_lives():
-#	if character_type == CHARACTER_TYPES.player:
-#		get_tree().call_group("GUI","update_lives", lives)
 
 func die():
 	get_tree().change_scene("res://Scenes/GUI/GameOver/GameOver.tscn")

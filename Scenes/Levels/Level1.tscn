@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/Levels/TemplateLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Walls/wallDoorway.tscn" type="PackedScene" id=2]
@@ -43,8 +43,7 @@ tracks/0/keys = {
 "values": [ Vector3( -0.8251, 0, -10.2771 ), Vector3( 18.1749, 0, -10.2771 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Movement"
+[sub_resource type="Animation" id=4]
 length = 6.0
 loop = true
 step = 1.0
@@ -59,6 +58,130 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 18.4682, 0, -14.4868 ), Vector3( -1.0318, 0, -14.4868 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 2, 2, 2 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 350, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 2, 2, 2 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 350, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "lose_life"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 2, 2, 2 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 350, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
 }
 
 [node name="Level1" instance=ExtResource( 1 )]
@@ -228,7 +351,7 @@ transform = Transform( -0.5, 0, 1.62921e-07, 0, 0.5, 0, -1.62921e-07, 0, -0.5, -
 [node name="Doorway" type="Node" parent="Walls" index="2"]
 
 [node name="doorway" parent="Walls/Doorway" index="0" instance=ExtResource( 4 )]
-transform = Transform( -8.14603e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -8.14603e-08, -1.62316, 0.25, 6.66096 )
+transform = Transform( -8.14603e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -8.14603e-08, -1.62316, -0.25, 6.66096 )
 
 [node name="Walldorrway" type="Node" parent="Walls" index="3"]
 
@@ -456,63 +579,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0.304067, 4.46665 )
 [node name="RefillArea3" parent="RefillAreas" index="2" instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.304067, 10.9667 )
 
-[node name="Player" parent="Player" index="0"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 9.335, 0.282754, 14.239 )
-max_ammo = 10
-
-[node name="CollisionShape" parent="Player/Player" index="1"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.5, 0 )
-
-[node name="Armature" parent="Player/Player" index="2"]
-transform = Transform( 0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, -0.5, 0 )
-
-[node name="AnimationTreePlayer2" parent="Player/Player/Armature" index="2"]
-data = {
-"active": true,
-"connections": [ "Action", "out", 0, "ThrowAnim", "Action", 0, "Move", "Action", 1, "RefillAnim", "Action", 2, "anim", "Move", 0, "anim 2", "Move", 1 ],
-"master": NodePath("../AnimationPlayer"),
-"nodes": [ {
-"filter": [  ],
-"from": "Idle",
-"id": "anim",
-"position": Vector2( 104, 13 ),
-"type": "animation"
-}, {
-"id": "out",
-"position": Vector2( 784, 87 ),
-"type": "output"
-}, {
-"filter": [  ],
-"from": "Working",
-"id": "RefillAnim",
-"position": Vector2( 447, 167 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "Run",
-"id": "anim 2",
-"position": Vector2( 124, 137 ),
-"type": "animation"
-}, {
-"blend": -1.0,
-"id": "Action",
-"position": Vector2( 630, 41 ),
-"type": "blend3"
-}, {
-"filter": [  ],
-"from": "Punch",
-"id": "ThrowAnim",
-"position": Vector2( 439, 14 ),
-"type": "animation"
-}, {
-"blend": 0.0,
-"filter": [  ],
-"id": "Move",
-"position": Vector2( 268, 63 ),
-"type": "blend2"
-} ]
-}
-
 [node name="Robot" parent="Robots" index="0" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8251, 0, -10.2771 )
 
@@ -535,7 +601,7 @@ autoplay = "Movement"
 anims/Movement = SubResource( 2 )
 
 [node name="Robot2" parent="Robots" index="1" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4682, 0, -14.4868 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9682, 0, -14.4868 )
 
 [node name="RobotArmature" parent="Robots/Robot2" index="4"]
 bones/1/bound_children = [ NodePath("BoneAttachment002") ]
@@ -553,7 +619,16 @@ bones/42/bound_children = [ NodePath("BoneAttachment008") ]
 
 [node name="PositionAnimation" parent="Robots/Robot2" index="6"]
 autoplay = "Movement"
-anims/Movement = SubResource( 3 )
+anims/Movement = SubResource( 4 )
+
+[node name="AnimationPlayer" parent="Robots/Robot2/Lives/Live" index="0"]
+anims/lose_life = SubResource( 5 )
+
+[node name="AnimationPlayer" parent="Robots/Robot2/Lives/Live2" index="0"]
+anims/lose_life = SubResource( 6 )
+
+[node name="AnimationPlayer" parent="Robots/Robot2/Lives/Live3" index="0"]
+anims/lose_life = SubResource( 7 )
 
 [node name="Spawner2" parent="Spawner" index="0" instance=ExtResource( 9 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 20.806, 0.034, 2.8 )
@@ -561,9 +636,10 @@ transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 20.806,
 [node name="Spawner3" parent="Spawner" index="1" instance=ExtResource( 9 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -4.592, 0.035, 1.78 )
 
-[editable path="Furniture/CoffeMachine"]
+[node name="PlayerStartPos" parent="." index="11"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 15, 2.5, 10 )
 
-[editable path="Player/Player"]
+[editable path="Furniture/CoffeMachine"]
 
 [editable path="Robots/Robot"]
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Ammo/models/Burger.mesh" type="ArrayMesh" id=1]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 1
+emission_sphere_radius = 1.5
+flag_align_y = true
+flag_rotate_y = true
+gravity = Vector3( 0, 2.5, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 1.0
+scale = 0.5
+
+[node name="Burgers" type="Particles"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1, -0.5, -5.5 )
+amount = 24
+lifetime = 2.0
+visibility_aabb = AABB( -4, -5, -4, 8, 10, 8 )
+process_material = SubResource( 1 )
+draw_pass_1 = ExtResource( 1 )

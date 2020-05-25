@@ -25,7 +25,7 @@ func _on_FullScreen_pressed():
 
 
 func _on_Customise_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://Scenes/Customisation/CharacterCostumisaton.tscn")
 
 
 func _on_Quit_pressed():

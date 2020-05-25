@@ -1,32 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenes/characters/Character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/characters/Animations-Male/death.anim" type="Animation" id=2]
+[ext_resource path="res://Scenes/characters/Players/PlayerTemplate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/characters/Players/Armatures/Armature-M.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/Camera.gd" type="Script" id=5]
-[ext_resource path="res://SFX/harp-glissando-up.wav" type="AudioStream" id=6]
 
-[node name="Player" instance=ExtResource( 1 )]
-collision_layer = 2
-collision_mask = 17
-script = ExtResource( 4 )
+[node name="Player" instance=ExtResource( 2 )]
 
-[node name="MeshInstance" parent="." index="0"]
-visible = false
-
-[node name="Armature" parent="." index="2" instance=ExtResource( 3 )]
+[node name="Armature" parent="." index="8" instance=ExtResource( 3 )]
 transform = Transform( 0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, 0, 0 )
 
-[node name="AnimationPlayer" parent="Armature" index="1"]
-anims/death = ExtResource( 2 )
-
-[node name="AnimationTreePlayer2" type="AnimationTreePlayer" parent="Armature" index="2"]
-master_player = NodePath("../AnimationPlayer")
-active = true
+[node name="AnimationTreePlayer2" parent="Armature" index="2"]
 data = {
 "active": true,
-"connections": [ "Action", "out", 0, "ThrowAnim", "Action", 0, "Move", "Action", 1, "RefillAnim", "Action", 2, "anim", "Move", 0, "anim 2", "Move", 1 ],
+"connections": [ "Action", "out", 0, "anim", "Move", 0, "anim 2", "Move", 1, "ThrowAnim", "Action", 0, "Move", "Action", 1, "RefillAnim", "Action", 2 ],
 "master": NodePath("../AnimationPlayer"),
 "nodes": [ {
 "filter": [  ],
@@ -39,10 +24,16 @@ data = {
 "position": Vector2( 784, 87 ),
 "type": "output"
 }, {
+"blend": 0.0,
 "filter": [  ],
-"from": "Working",
-"id": "RefillAnim",
-"position": Vector2( 447, 167 ),
+"id": "Move",
+"position": Vector2( 268, 63 ),
+"type": "blend2"
+}, {
+"filter": [  ],
+"from": "Punch",
+"id": "ThrowAnim",
+"position": Vector2( 439, 14 ),
 "type": "animation"
 }, {
 "filter": [  ],
@@ -51,39 +42,17 @@ data = {
 "position": Vector2( 124, 137 ),
 "type": "animation"
 }, {
-"blend": -1.0,
+"filter": [  ],
+"from": "Working",
+"id": "RefillAnim",
+"position": Vector2( 447, 167 ),
+"type": "animation"
+}, {
+"blend": -0.02,
 "id": "Action",
 "position": Vector2( 630, 41 ),
 "type": "blend3"
-}, {
-"filter": [  ],
-"from": "Punch",
-"id": "ThrowAnim",
-"position": Vector2( 439, 14 ),
-"type": "animation"
-}, {
-"blend": 0.0,
-"filter": [  ],
-"id": "Move",
-"position": Vector2( 268, 63 ),
-"type": "blend2"
 } ]
 }
-
-[node name="Camera" type="Camera" parent="." index="3"]
-transform = Transform( -0.999066, -0.0037652, 0.0430364, 0, 0.996195, 0.0871557, -0.0432008, 0.0870744, -0.995264, 0, 2.2, -2.784 )
-doppler_tracking = 2
-current = true
-script = ExtResource( 5 )
-
-[node name="CanFire" parent="." index="5"]
-wait_time = 0.5
-
-[node name="RefillTimer" type="Timer" parent="." index="6"]
-
-[node name="Harp" type="AudioStreamPlayer" parent="." index="7"]
-stream = ExtResource( 6 )
-volume_db = -15.0
-[connection signal="timeout" from="RefillTimer" to="." method="_on_CanRefill_timeout"]
 
 [editable path="Armature"]

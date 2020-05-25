@@ -3,7 +3,7 @@
 [ext_resource path="res://Models/Architecture/floorFull.mesh" type="ArrayMesh" id=1]
 [ext_resource path="res://Scenes/GUI/PauseMenue.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Materials/DarkWood.material" type="Material" id=3]
-[ext_resource path="res://Scenes/characters/Players/PlayerM.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SFX/finalbattle.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scripts/TemplateLevel.gd" type="Script" id=5]
 
 [sub_resource type="ConcavePolygonShape" id=1]
@@ -39,58 +39,13 @@ shape = SubResource( 1 )
 
 [node name="Player" type="Node" parent="."]
 
-[node name="Player" parent="Player" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.782362, 0 )
-
-[node name="AnimationTreePlayer2" parent="Player/Player/Armature" index="2"]
-data = {
-"active": true,
-"connections": [ "Action", "out", 0, "ThrowAnim", "Action", 0, "Move", "Action", 1, "RefillAnim", "Action", 2, "anim", "Move", 0, "anim 2", "Move", 1 ],
-"master": NodePath("../AnimationPlayer"),
-"nodes": [ {
-"filter": [  ],
-"from": "Idle",
-"id": "anim",
-"position": Vector2( 104, 13 ),
-"type": "animation"
-}, {
-"id": "out",
-"position": Vector2( 784, 87 ),
-"type": "output"
-}, {
-"filter": [  ],
-"from": "Working",
-"id": "RefillAnim",
-"position": Vector2( 447, 167 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "Run",
-"id": "anim 2",
-"position": Vector2( 124, 137 ),
-"type": "animation"
-}, {
-"blend": -1.0,
-"id": "Action",
-"position": Vector2( 630, 41 ),
-"type": "blend3"
-}, {
-"filter": [  ],
-"from": "Punch",
-"id": "ThrowAnim",
-"position": Vector2( 439, 14 ),
-"type": "animation"
-}, {
-"blend": 0.0,
-"filter": [  ],
-"id": "Move",
-"position": Vector2( 268, 63 ),
-"type": "blend2"
-} ]
-}
-
 [node name="Robots" type="Node" parent="."]
 
 [node name="Spawner" type="Node" parent="."]
 
-[editable path="Player/Player"]
+[node name="PlayerStartPos" type="Position3D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+autoplay = true
