@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/characters/Players/PlayerTemplate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/characters/Players/Armatures/Armature-M.tscn" type="PackedScene" id=3]
+
+[node name="Player" instance=ExtResource( 2 )]
+
+[node name="Armature" parent="." index="8" instance=ExtResource( 3 )]
+transform = Transform( 0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, 0, 0 )
+
+[node name="AnimationTreePlayer2" parent="Armature" index="2"]
+data = {
+"active": true,
+"connections": [ "Action", "out", 0, "anim", "Move", 0, "anim 2", "Move", 1, "ThrowAnim", "Action", 0, "Move", "Action", 1, "RefillAnim", "Action", 2 ],
+"master": NodePath("../AnimationPlayer"),
+"nodes": [ {
+"filter": [  ],
+"from": "Idle",
+"id": "anim",
+"position": Vector2( 104, 13 ),
+"type": "animation"
+}, {
+"id": "out",
+"position": Vector2( 784, 87 ),
+"type": "output"
+}, {
+"blend": 0.0,
+"filter": [  ],
+"id": "Move",
+"position": Vector2( 268, 63 ),
+"type": "blend2"
+}, {
+"filter": [  ],
+"from": "Punch",
+"id": "ThrowAnim",
+"position": Vector2( 439, 14 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "Run",
+"id": "anim 2",
+"position": Vector2( 124, 137 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "Working",
+"id": "RefillAnim",
+"position": Vector2( 447, 167 ),
+"type": "animation"
+}, {
+"blend": -0.02,
+"id": "Action",
+"position": Vector2( 630, 41 ),
+"type": "blend3"
+} ]
+}
+
+[editable path="Armature"]

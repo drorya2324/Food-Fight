@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Themes/DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scenes/GUI/GFX/blue_sliderLeft.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/GUI/GFX/blue_sliderRight.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/GUI/GFX/green_sliderLeft.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/GUI/GFX/green_sliderRight.png" type="Texture" id=5]
+[ext_resource path="res://Themes/CostumazationUI.tres" type="Theme" id=6]
+
+[node name="CostumazationUI" type="CanvasLayer"]
+
+[node name="Controls" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -213.0
+margin_top = -158.08
+margin_right = 213.0
+margin_bottom = -38.0801
+theme = ExtResource( 6 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Controls"]
+margin_right = 426.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CharacterSelect" type="OptionButton" parent="Controls"]
+margin_top = 4.0
+margin_right = 426.0
+margin_bottom = 44.0
+text = "Freya"
+align = 1
+items = [ "Freya", null, false, 0, null, "Frey", null, false, 1, null ]
+selected = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Controls"]
+margin_top = 48.0
+margin_right = 426.0
+margin_bottom = 82.0
+
+[node name="LeftButton" type="TextureButton" parent="Controls/HBoxContainer"]
+margin_right = 39.0
+margin_bottom = 34.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer"]
+margin_left = 43.0
+margin_right = 329.0
+margin_bottom = 34.0
+text = "Costumize Your Look"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightButton" type="TextureButton" parent="Controls/HBoxContainer"]
+margin_left = 333.0
+margin_right = 372.0
+margin_bottom = 34.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Controls"]
+margin_top = 86.0
+margin_right = 426.0
+margin_bottom = 120.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Controls/HBoxContainer2"]
+margin_left = 160.0
+margin_right = 232.0
+margin_bottom = 34.0
+text = "Begin"
+align = 2
+
+[node name="StartButton" type="Button" parent="Controls/HBoxContainer2"]
+margin_left = 236.0
+margin_right = 266.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 30, 30 )
+theme = ExtResource( 1 )
